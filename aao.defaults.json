@@ -1,0 +1,54 @@
+{
+  "project": {
+    "defaults-root": "",
+    "project-root": ".",
+    "test-root": "apps/web/tests",
+    "results-dir": "apps/web/test-results",
+    "coverage-dir": "apps/web/test-coverage"
+  },
+  "producers": {
+    "agiletest": {
+      "auth-base-url": "https://agiletest.atlas.devsamurai.com",
+      "submit-base-url": "https://api.agiletest.app",
+      "project-id": "",
+      "client-id": "",
+      "client-secret": "",
+      "timezone": "America/New_York",
+      "test-plan-keys": "",
+      "nightly-test-plan-keys": ""
+    },
+    "jira": {
+      "base-url": "",
+      "email": "",
+      "api-token": ""
+    }
+  },
+  "executors": {
+    "vitest": {
+      "match": "\\.test\\.(ts|tsx)$",
+      "cmd": "pnpm -C {project-root}/apps/web exec vitest --run {files}",
+      "env": {}
+    },
+    "playwright": {
+      "match": "\\.spec\\.(ts|tsx)$",
+      "cmd": "pnpm -C {project-root}/apps/web exec playwright test {files}",
+      "env": {}
+    },
+    "manual": {
+      "match": "\\.md$"
+    }
+  },
+  "consumers": {
+    "sonar": {
+      "enabled": true,
+      "host-url": "https://sonarcloud.io",
+      "org": "",
+      "project-key": "",
+      "token": "",
+      "cmd": "sonar-scanner -Dsonar.host.url={sonar-host-url} -Dsonar.projectKey={sonar-project-key} -Dsonar.organization={sonar-org} -Dsonar.junit.reportPaths={project-root}/{results-dir} -Dsonar.javascript.lcov.reportPaths={expand:project-root/coverage-dir|.*\\.info$|,}",
+      "env": {
+       "SONAR_TOKEN": "{sonar-token}"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+dist/
+*.tsbuildinfo
+node_modules/
+# macOS
+.DS_Store
+**/.DS_Store
+
+# build output
+dist/
+tsconfig.build.tsbuildinfo

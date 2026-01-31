@@ -1,0 +1,29 @@
+{
+  "name": "agiletest-automation-orchestrator",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "description": "AgileTest Automation Orchestrator (AAO) - orchestration layer between AgileTest and automated test tooling",
+  "license": "MIT",
+  "bin": {
+    "aao": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "aao.defaults.json",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "fast-xml-parser": "^4.5.3",
+    "glob": "^10.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "typescript": "^5.6.3"
+  }
+}
